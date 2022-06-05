@@ -1,20 +1,19 @@
-public class Employee {
-    private String name;
-    private String secondName;
-    private String fathersName;
-    private double salary;
-    private int division;
-    private final int id;
-    static int counter;
+package com.example.homeworkenv4;
 
-    public Employee(String name, String secondName, String fathersName, double salary, int division) {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Objects;
+
+public class Employee {
+    @JsonProperty("firstName")
+    private String name;
+    @JsonProperty("lastName")
+    private String secondName;
+
+
+    public Employee(String name, String secondName) {
         this.name = name;
         this.secondName = secondName;
-        this.fathersName = fathersName;
-        this.salary = salary;
-        this.division = division;
-        this.id = counter++;
-
     }
 
     public String getName() {
@@ -25,32 +24,33 @@ public class Employee {
         return this.secondName;
     }
 
-    public String getFathersName() {
-        return this.fathersName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public double getSalary() {
-        return this.salary;
-    }
-
-    public int getDivision() {
-        return this.division;
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-
-    public void setDivision(int division) {
-        this.division = division;
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
     @Override
     public String toString() {
-        return "Name " + this.name + " Surname" + this.secondName + " Fathersname" + this.fathersName + " Division" + this.division + " Salary" + this.salary + " ID" + this.id ;
+        return "Name " + this.name + " Surname" + this.secondName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Employee employee = (Employee) o;
+        return name.equals(employee.name) && secondName.equals(employee.secondName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, secondName);
     }
 }
