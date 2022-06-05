@@ -20,22 +20,22 @@ public class FirstController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/add")
     public Employee addEmployee(@RequestParam String name, @RequestParam String secondName) {
         return employeeService.addEmployee(name, secondName);
     }
 
-    @GetMapping(value = "/delete", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/delete")
     public Employee deleteEmployee(@RequestParam String name, @RequestParam String secondName) {
         return employeeService.deleteEmployee(name, secondName);
     }
 
-    @GetMapping(value = "/find", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/find")
     public Employee findEmployee(@RequestParam String name, @RequestParam String secondName) {
         return employeeService.findEmployee(name, secondName);
     }
 
-    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/")
     public List<Employee> getAll() {
         return employeeService.getAll();
     }
